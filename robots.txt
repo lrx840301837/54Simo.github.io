@@ -10,5 +10,5 @@ Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
 
-Sitemap: https://cnsimo.cn/sitemap.xml
-Sitemap: https://cnsimo.cn/baidusitemap.xml
+Sitemap: https://54simo.github.io/sitemap.xml
+Sitemap: https://54simo.github.io/baidusitemap.xml
