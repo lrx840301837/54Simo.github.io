@@ -4138,7 +4138,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright" align="center">
   
   &copy; 
   <span itemprop="copyrightYear">2017</span>
@@ -4148,6 +4148,7 @@
   <span class="author" itemprop="copyrightHolder">CN_Simo</span>
 </div>
 
+<!--
 
 <div class="powered-by">
   由 <a class="theme-link" href="https://hexo.io" rel="external nofollow">Hexo</a> 强力驱动
@@ -4160,10 +4161,14 @@
   </a>
 </div>
 
+-->
 
+<div class="words" align="center">
+感谢大家的鼎力支持与关注
+</div>
         
 
-<div class="busuanzi-count">
+<div class="busuanzi-count" align="center">
 
   <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
@@ -4414,6 +4419,28 @@
 
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 
   
 
