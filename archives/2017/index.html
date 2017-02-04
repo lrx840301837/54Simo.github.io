@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="simo的技术博客" />
+  <meta name="keywords" content="simo的技术博客,simo,blog,个人博客,凌小墨,CN_Simo,cnsimo.cn,cnsimo" />
 
 
 
@@ -88,7 +88,11 @@
 <script>
 	(function(){
 		if(''){
-			if (prompt('请输入文章密码','') !== ''){
+      var pw = prompt('请输入文章密码','');
+      if ( pw == null || pw == "" ) {
+        history.back();
+      }
+			else if (pw !== ''){
 				alert('密码错误！');
 				history.back();
 			}
