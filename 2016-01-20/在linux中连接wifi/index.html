@@ -250,7 +250,7 @@
           </a>
         </li>
       
- 
+
       
         <li class="menu-item menu-item-search">
           
@@ -263,7 +263,7 @@
           </a>
         </li>
       
-      
+
 
 
    <li class="menu-item menu-item-high"> <a title="点我让整个页面High起来！" href='javascript:(function() {
@@ -275,14 +275,14 @@
         e.setAttribute("class", l);
         document.body.appendChild(e)
     }
- 
+
     function h() {
         var e = document.getElementsByClassName(l);
         for (var t = 0; t < e.length; t++) {
             document.body.removeChild(e[t])
         }
     }
- 
+
     function p() {
         var e = document.createElement("div");
         e.setAttribute("class", a);
@@ -291,19 +291,19 @@
             document.body.removeChild(e)
         }, 100)
     }
- 
+
     function d(e) {
         return {
             height : e.offsetHeight,
             width : e.offsetWidth
         }
     }
- 
+
     function v(i) {
         var s = d(i);
         return s.height > e && s.height < n && s.width > t && s.width < r
     }
- 
+
     function m(e) {
         var t = e;
         var n = 0;
@@ -313,7 +313,7 @@
         }
         return n
     }
- 
+
     function g() {
         var e = document.documentElement;
         if (!!window.innerWidth) {
@@ -323,19 +323,19 @@
         }
         return 0
     }
- 
+
     function y() {
         if (window.pageYOffset) {
             return window.pageYOffset
         }
         return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
     }
- 
+
     function E(e) {
         var t = m(e);
         return t >= w && t <= b + w
     }
- 
+
     function S() {
         var e = document.createElement("audio");
         e.setAttribute("class", l);
@@ -361,15 +361,15 @@
         document.body.appendChild(e);
         e.play()
     }
- 
+
     function x(e) {
         e.className += " " + s + " " + o
     }
- 
+
     function T(e) {
         e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
     }
- 
+
     function N() {
         var e = document.getElementsByClassName(s);
         var t = new RegExp("\\b" + s + "\\b");
@@ -377,7 +377,7 @@
             e[n].className = e[n].className.replace(t, "")
         }
     }
- 
+
     var e = 30;
     var t = 30;
     var n = 350;
@@ -415,9 +415,14 @@
             O.push(A)
         }
     }
-})()    '>High一下</a> </li>
-      
-      
+})()    '>  
+<span class="fa-stack fa-spin">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-music fa-stack-1x fa-inverse"></i>
+</span>
+  </i>High一下</a> </li>
+
+
     </ul>
   
 
