@@ -467,10 +467,10 @@
     
       <div class="category-all-page">
         <div class="category-all-title">
-            目前共计 1 个分类
+            目前共计 3 个分类
         </div>
         <div class="category-all">
-          <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo官方文档/">Hexo官方文档</a><span class="category-list-count">1</span></li></ul>
+          <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo官方文档/">Hexo官方文档</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Qt框架/">Qt框架</a><span class="category-list-count">1</span></li></ul>
         </div>
       </div>
     
@@ -520,16 +520,16 @@
                alt="CN_Simo" />
           <p class="site-author-name" itemprop="name">CN_Simo</p>
           <p class="site-description motion-element" itemprop="description">我是一个小小的程序员，每天都在为许许多多的bug而奋斗，这里也是我的劳动成果！如果你我志同道合，希望多多交流！</p>
-          
-          
-          
+
+
+
         </div>
         <nav class="site-state motion-element">
-        
+
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -538,12 +538,19 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
           
 
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
           
 
         </nav>
@@ -638,14 +645,14 @@
         e.setAttribute("class", l);
         document.body.appendChild(e)
     }
- 
+
     function h() {
         var e = document.getElementsByClassName(l);
         for (var t = 0; t < e.length; t++) {
             document.body.removeChild(e[t])
         }
     }
- 
+
     function p() {
         var e = document.createElement("div");
         e.setAttribute("class", a);
@@ -654,19 +661,19 @@
             document.body.removeChild(e)
         }, 100)
     }
- 
+
     function d(e) {
         return {
             height : e.offsetHeight,
             width : e.offsetWidth
         }
     }
- 
+
     function v(i) {
         var s = d(i);
         return s.height > e && s.height < n && s.width > t && s.width < r
     }
- 
+
     function m(e) {
         var t = e;
         var n = 0;
@@ -676,7 +683,7 @@
         }
         return n
     }
- 
+
     function g() {
         var e = document.documentElement;
         if (!!window.innerWidth) {
@@ -686,19 +693,19 @@
         }
         return 0
     }
- 
+
     function y() {
         if (window.pageYOffset) {
             return window.pageYOffset
         }
         return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
     }
- 
+
     function E(e) {
         var t = m(e);
         return t >= w && t <= b + w
     }
- 
+
     function S() {
         var e = document.createElement("audio");
         e.setAttribute("class", l);
@@ -724,15 +731,15 @@
         document.body.appendChild(e);
         e.play()
     }
- 
+
     function x(e) {
         e.className += " " + s + " " + o
     }
- 
+
     function T(e) {
         e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
     }
- 
+
     function N() {
         var e = document.getElementsByClassName(s);
         var t = new RegExp("\\b" + s + "\\b");
@@ -740,7 +747,7 @@
             e[n].className = e[n].className.replace(t, "")
         }
     }
- 
+
     var e = 30;
     var t = 30;
     var n = 350;
