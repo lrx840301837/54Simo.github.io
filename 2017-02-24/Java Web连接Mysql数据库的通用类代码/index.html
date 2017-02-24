@@ -1,0 +1,1342 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="sogou_site_verification" content="BUXOPyY9qC"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="jave web连接MySql" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<!--加密字段-->
+<script>
+	(function(){
+		if(''){
+      var pw = prompt('请输入文章密码','');
+      if ( pw == null || pw == "" ) {
+        history.back();
+      }
+			else if (pw !== ''){
+				alert('密码错误！');
+				history.back();
+			}
+		}
+	})();
+</script>
+<!--加密字段-->
+
+<meta name="description" content="使用情况：当多个文件中用到连接数据库操作时，如果写多次操作代码将显得愚笨。这里的这个类DBHelper，只需要在用到连接数据库操作的时候导入这个类包，然后通过这个类可以很容易的实现连接数据库操作。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java Web连接Mysql的通用类代码">
+<meta property="og:url" content="http://cnsimo.cn/2017-02-24/Java Web连接Mysql数据库的通用类代码/index.html">
+<meta property="og:site_name" content="CN_Simo">
+<meta property="og:description" content="使用情况：当多个文件中用到连接数据库操作时，如果写多次操作代码将显得愚笨。这里的这个类DBHelper，只需要在用到连接数据库操作的时候导入这个类包，然后通过这个类可以很容易的实现连接数据库操作。">
+<meta property="og:updated_time" content="2017-02-24T13:01:11.992Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java Web连接Mysql的通用类代码">
+<meta name="twitter:description" content="使用情况：当多个文件中用到连接数据库操作时，如果写多次操作代码将显得愚笨。这里的这个类DBHelper，只需要在用到连接数据库操作的时候导入这个类包，然后通过这个类可以很容易的实现连接数据库操作。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://cnsimo.cn/2017-02-24/Java Web连接Mysql数据库的通用类代码/"/>
+
+
+
+
+
+  <title> Java Web连接Mysql的通用类代码 | CN_Simo </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?bea911c8a24789d56968b5caddb51dee";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta custom-logo">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">CN_Simo</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <h1 class="site-subtitle" itemprop="description"></h1>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+
+
+
+   <li class="menu-item menu-item-high"> <a title="点我让整个页面High起来！" href='javascript:(function() {
+    function c() {
+        var e = document.createElement("link");
+        e.setAttribute("type", "text/css");
+        e.setAttribute("rel", "stylesheet");
+        e.setAttribute("href", f);
+        e.setAttribute("class", l);
+        document.body.appendChild(e)
+    }
+
+    function h() {
+        var e = document.getElementsByClassName(l);
+        for (var t = 0; t < e.length; t++) {
+            document.body.removeChild(e[t])
+        }
+    }
+
+    function p() {
+        var e = document.createElement("div");
+        e.setAttribute("class", a);
+        document.body.appendChild(e);
+        setTimeout(function() {
+            document.body.removeChild(e)
+        }, 100)
+    }
+
+    function d(e) {
+        return {
+            height : e.offsetHeight,
+            width : e.offsetWidth
+        }
+    }
+
+    function v(i) {
+        var s = d(i);
+        return s.height > e && s.height < n && s.width > t && s.width < r
+    }
+
+    function m(e) {
+        var t = e;
+        var n = 0;
+        while (!!t) {
+            n += t.offsetTop;
+            t = t.offsetParent
+        }
+        return n
+    }
+
+    function g() {
+        var e = document.documentElement;
+        if (!!window.innerWidth) {
+            return window.innerHeight
+        } else if (e && !isNaN(e.clientHeight)) {
+            return e.clientHeight
+        }
+        return 0
+    }
+
+    function y() {
+        if (window.pageYOffset) {
+            return window.pageYOffset
+        }
+        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+    }
+
+    function E(e) {
+        var t = m(e);
+        return t >= w && t <= b + w
+    }
+
+    function S() {
+        var e = document.createElement("audio");
+        e.setAttribute("class", l);
+        e.src = i;
+        e.loop = false;
+        e.addEventListener("canplay", function() {
+            setTimeout(function() {
+                x(k)
+            }, 500);
+            setTimeout(function() {
+                N();
+                p();
+                for (var e = 0; e < O.length; e++) {
+                    T(O[e])
+                }
+            }, 15500)
+        }, true);
+        e.addEventListener("ended", function() {
+            N();
+            h()
+        }, true);
+        e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+        document.body.appendChild(e);
+        e.play()
+    }
+
+    function x(e) {
+        e.className += " " + s + " " + o
+    }
+
+    function T(e) {
+        e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+    }
+
+    function N() {
+        var e = document.getElementsByClassName(s);
+        var t = new RegExp("\\b" + s + "\\b");
+        for (var n = 0; n < e.length; ) {
+            e[n].className = e[n].className.replace(t, "")
+        }
+    }
+
+    var e = 30;
+    var t = 30;
+    var n = 350;
+    var r = 350;
+    var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+    var s = "mw-harlem_shake_me";
+    var o = "im_first";
+    var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+    var a = "mw-strobe_light";
+    var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+    var l = "mw_added_css";
+    var b = g();
+    var w = y();
+    var C = document.getElementsByTagName("*");
+    var k = null;
+    for (var L = 0; L < C.length; L++) {
+        var A = C[L];
+        if (v(A)) {
+            if (E(A)) {
+                k = A;
+                break
+            }
+        }
+    }
+    if (A === null) {
+        console.warn("Could not find a node of the right size. Please try a different page.");
+        return
+    }
+    c();
+    S();
+    var O = [];
+    for (var L = 0; L < C.length; L++) {
+        var A = C[L];
+        if (v(A)) {
+            O.push(A)
+        }
+    }
+})()    '>  
+<span class="fa-stack fa-spin">
+<i class="fa fa-circle fa-stack-2x"></i>
+<i class="fa fa-music fa-stack-1x fa-inverse"></i>
+</span>
+  </i>High一下</a> </li>
+
+
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <!--运动的球开始-->
+    
+    <!--运动的球结束-->
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://cnsimo.cn/2017-02-24/Java Web连接Mysql数据库的通用类代码/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="CN_Simo">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/b12.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="CN_Simo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="CN_Simo" src="/images/wechat-qcode.png">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java Web连接Mysql的通用类代码
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-24T21:00:51+08:00">
+                2017-02-24
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-02-24T21:01:11+08:00">
+                2017-02-24
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Java Web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017-02-24/Java Web连接Mysql数据库的通用类代码/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017-02-24/Java Web连接Mysql数据库的通用类代码/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="使用情况："><a href="#使用情况：" class="headerlink" title="使用情况："></a>使用情况：</h2><p>当多个文件中用到连接数据库操作时，如果写多次操作代码将显得愚笨。这里的这个类DBHelper，只需要在用到连接数据库操作的时候导入这个类包，然后通过这个类可以很容易的实现连接数据库操作。<br><a id="more"></a></p>
+<h2 id="类代码如下："><a href="#类代码如下：" class="headerlink" title="类代码如下："></a>类代码如下：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div><div class="line">296</div><div class="line">297</div><div class="line">298</div><div class="line">299</div><div class="line">300</div><div class="line">301</div><div class="line">302</div><div class="line">303</div><div class="line">304</div><div class="line">305</div><div class="line">306</div><div class="line">307</div><div class="line">308</div><div class="line">309</div><div class="line">310</div><div class="line">311</div><div class="line">312</div><div class="line">313</div><div class="line">314</div><div class="line">315</div><div class="line">316</div><div class="line">317</div><div class="line">318</div><div class="line">319</div><div class="line">320</div><div class="line">321</div><div class="line">322</div><div class="line">323</div><div class="line">324</div><div class="line">325</div><div class="line">326</div><div class="line">327</div><div class="line">328</div><div class="line">329</div><div class="line">330</div><div class="line">331</div><div class="line">332</div><div class="line">333</div><div class="line">334</div><div class="line">335</div><div class="line">336</div><div class="line">337</div><div class="line">338</div><div class="line">339</div><div class="line">340</div><div class="line">341</div><div class="line">342</div><div class="line">343</div><div class="line">344</div><div class="line">345</div><div class="line">346</div><div class="line">347</div><div class="line">348</div><div class="line">349</div><div class="line">350</div><div class="line">351</div><div class="line">352</div><div class="line">353</div><div class="line">354</div><div class="line">355</div><div class="line">356</div><div class="line">357</div><div class="line">358</div><div class="line">359</div><div class="line">360</div><div class="line">361</div><div class="line">362</div><div class="line">363</div><div class="line">364</div><div class="line">365</div><div class="line">366</div><div class="line">367</div><div class="line">368</div><div class="line">369</div><div class="line">370</div><div class="line">371</div><div class="line">372</div><div class="line">373</div><div class="line">374</div><div class="line">375</div><div class="line">376</div><div class="line">377</div><div class="line">378</div><div class="line">379</div><div class="line">380</div><div class="line">381</div><div class="line">382</div><div class="line">383</div><div class="line">384</div><div class="line">385</div><div class="line">386</div><div class="line">387</div><div class="line">388</div><div class="line">389</div><div class="line">390</div><div class="line">391</div><div class="line">392</div><div class="line">393</div><div class="line">394</div><div class="line">395</div><div class="line">396</div><div class="line">397</div><div class="line">398</div><div class="line">399</div><div class="line">400</div><div class="line">401</div><div class="line">402</div><div class="line">403</div><div class="line">404</div><div class="line">405</div><div class="line">406</div><div class="line">407</div><div class="line">408</div><div class="line">409</div><div class="line">410</div><div class="line">411</div><div class="line">412</div><div class="line">413</div><div class="line">414</div><div class="line">415</div><div class="line">416</div><div class="line">417</div><div class="line">418</div><div class="line">419</div><div class="line">420</div><div class="line">421</div><div class="line">422</div><div class="line">423</div><div class="line">424</div><div class="line">425</div><div class="line">426</div><div class="line">427</div><div class="line">428</div><div class="line">429</div><div class="line">430</div><div class="line">431</div><div class="line">432</div><div class="line">433</div><div class="line">434</div><div class="line">435</div><div class="line">436</div><div class="line">437</div><div class="line">438</div><div class="line">439</div><div class="line">440</div><div class="line">441</div><div class="line">442</div><div class="line">443</div><div class="line">444</div><div class="line">445</div><div class="line">446</div><div class="line">447</div><div class="line">448</div><div class="line">449</div><div class="line">450</div><div class="line">451</div><div class="line">452</div><div class="line">453</div><div class="line">454</div><div class="line">455</div><div class="line">456</div><div class="line">457</div><div class="line">458</div><div class="line">459</div><div class="line">460</div><div class="line">461</div><div class="line">462</div><div class="line">463</div><div class="line">464</div><div class="line">465</div><div class="line">466</div><div class="line">467</div><div class="line">468</div><div class="line">469</div><div class="line">470</div><div class="line">471</div><div class="line">472</div><div class="line">473</div><div class="line">474</div><div class="line">475</div><div class="line">476</div><div class="line">477</div><div class="line">478</div><div class="line">479</div><div class="line">480</div><div class="line">481</div><div class="line">482</div><div class="line">483</div><div class="line">484</div><div class="line">485</div><div class="line">486</div><div class="line">487</div><div class="line">488</div><div class="line">489</div><div class="line">490</div><div class="line">491</div><div class="line">492</div><div class="line">493</div><div class="line">494</div><div class="line">495</div><div class="line">496</div><div class="line">497</div><div class="line">498</div><div class="line">499</div><div class="line">500</div><div class="line">501</div><div class="line">502</div><div class="line">503</div><div class="line">504</div><div class="line">505</div><div class="line">506</div><div class="line">507</div><div class="line">508</div><div class="line">509</div><div class="line">510</div><div class="line">511</div><div class="line">512</div><div class="line">513</div><div class="line">514</div><div class="line">515</div><div class="line">516</div><div class="line">517</div><div class="line">518</div><div class="line">519</div><div class="line">520</div><div class="line">521</div><div class="line">522</div><div class="line">523</div><div class="line">524</div><div class="line">525</div><div class="line">526</div><div class="line">527</div><div class="line">528</div><div class="line">529</div><div class="line">530</div><div class="line">531</div><div class="line">532</div><div class="line">533</div><div class="line">534</div><div class="line">535</div><div class="line">536</div><div class="line">537</div><div class="line">538</div><div class="line">539</div><div class="line">540</div><div class="line">541</div><div class="line">542</div><div class="line">543</div><div class="line">544</div><div class="line">545</div><div class="line">546</div><div class="line">547</div><div class="line">548</div><div class="line">549</div><div class="line">550</div><div class="line">551</div><div class="line">552</div><div class="line">553</div><div class="line">554</div><div class="line">555</div><div class="line">556</div><div class="line">557</div><div class="line">558</div><div class="line">559</div><div class="line">560</div><div class="line">561</div><div class="line">562</div><div class="line">563</div><div class="line">564</div><div class="line">565</div><div class="line">566</div><div class="line">567</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> DBHelper;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.Console;</div><div class="line"><span class="keyword">import</span> java.sql.*;</div><div class="line"><span class="keyword">import</span> java.util.Enumeration;</div><div class="line"><span class="comment">//import java.util.logging.*;</span></div><div class="line"><span class="comment">//import javax.swing.table.*;</span></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> *  SQL 基本操作</div><div class="line"> * 通过它,可以很轻松的使用 JDBC 来操纵数据库</div><div class="line"> * <span class="doctag">@author</span> Null</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DBHelper</span></span></div><div class="line">&#123;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 驱动</div><div class="line">     */</div><div class="line">    <span class="comment">//public static String driver = "com.microsoft.jdbc.sqlserver.SQLServerDriver";</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String driver = <span class="string">"com.mysql.jdbc.Driver"</span>;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 连接字符串</div><div class="line">     */</div><div class="line">    <span class="comment">//public static String url = "jdbc:microsoft:sqlserver://127.0.0.1:1433;DatabaseName=st";</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String url = <span class="string">"jdbc:mysql://127.0.0.1:3306/test"</span>;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 用户名</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String user = <span class="string">"root"</span>;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 密码</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String password = <span class="string">"root"</span>;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 不允许实例化该类</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">DBHelper</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 获取一个数据库连接</div><div class="line">     * 通过设置类的  driver / url / user / password 这四个静态变量来 设置数据库连接属性</div><div class="line">     * <span class="doctag">@return</span> 数据库连接</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">try</span></div><div class="line">        &#123;</div><div class="line">            <span class="comment">//获取驱动</span></div><div class="line">            Class.forName(driver);</div><div class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException ex)</div><div class="line">        &#123;</div><div class="line">            <span class="comment">//Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);</span></div><div class="line">            System.out.println(ex.getMessage());</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">try</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> DriverManager.getConnection(url, user, password);</div><div class="line">        &#125; <span class="keyword">catch</span> (SQLException ex)</div><div class="line">        &#123;</div><div class="line">            <span class="comment">//Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);</span></div><div class="line">            System.out.println(ex.getMessage());</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 获取一个 Statement</div><div class="line">     * 该 Statement 已经设置数据集 可以滚动,可以更新</div><div class="line">     * <span class="doctag">@return</span> 如果获取失败将返回 null,调用时记得检查返回值</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Statement <span class="title">getStatement</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        Connection conn = getConnection();</div><div class="line">        <span class="keyword">if</span> (conn == <span class="keyword">null</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">try</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,</div><div class="line">                    ResultSet.CONCUR_UPDATABLE);</div><div class="line">        <span class="comment">// 鐠佸墽鐤嗛弫鐗堝祦闂嗗棗褰叉禒銉︾泊閸旓拷閸欘垯浜掗弴瀛樻煀</span></div><div class="line">        &#125; <span class="keyword">catch</span> (SQLException ex)</div><div class="line">        &#123;</div><div class="line">            <span class="comment">//Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);</span></div><div class="line">            System.out.println(ex.getMessage());</div><div class="line">            close(conn);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 获取一个 Statement</div><div class="line">     * 该 Statement 已经设置数据集 可以滚动,可以更新</div><div class="line">     * <span class="doctag">@param</span> conn 数据库连接</div><div class="line">     * <span class="doctag">@return</span> 如果获取失败将返回 null,调用时记得检查返回值</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Statement <span class="title">getStatement</span><span class="params">(Connection conn)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (conn == <span class="keyword">null</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">try</span></div><div class="line">        &#123;</div><div class="line"></div><div class="line">            <span class="keyword">return</span> conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);</div><div class="line">            <span class="comment">// 设置数据集可以滚动,可以更新</span></div><div class="line">        &#125; <span class="keyword">catch</span> (SQLException ex)</div><div class="line">        &#123;</div><div class="line">            <span class="comment">//Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);</span></div><div class="line">            System.out.println(ex.getMessage());</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 获取一个带参数的 PreparedStatement</div><div class="line">     * 该 PreparedStatement 已经设置数据集 可以滚动,可以更新</div><div class="line">     * <span class="doctag">@param</span> cmdText 需要 ? 参数的 SQL 语句</div><div class="line">     * <span class="doctag">@param</span> cmdParams SQL 语句的参数表</div><div class="line">     * <span class="doctag">@return</span> 如果获取失败将返回 null,调用时记得检查返回值</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> PreparedStatement <span class="title">getPreparedStatement</span><span class="params">(String cmdText, Object[] cmdParams)</span></span></div><div class="line">    &#123;</div><div class="line">        Connection conn = getConnection();</div><div class="line">        <span class="keyword">if</span> (conn == <span class="keyword">null</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        PreparedStatement pstmt = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">try</span></div><div class="line">        &#123;</div><div class="line">            </div><div class="line">            pstmt = conn.prepareStatement(cmdText, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);</div><div class="line">            <span class="keyword">int</span> i = <span class="number">1</span>;</div><div class="line">            <span class="keyword">for</span> (Object item : cmdParams) <span class="comment">//java foreach遍历集合,要求集合类实现Enumeration接口</span></div><div class="line">            &#123;</div><div class="line">                pstmt.setObject(i, item);</div><div class="line">                i++;</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (SQLException e)</div><div class="line">        &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">            close(conn);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> pstmt;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     *  获取一个带参数的 PreparedStatement</div><div class="line">     * 该 PreparedStatement 已经设置数据集 可以滚动,可以更新</div><div class="line">     * <span class="doctag">@param</span> conn 数据库连接</div><div class="line">     * <span class="doctag">@param</span> cmdText 需要 ? 参数的 SQL 语句</div><div class="line">     * <span class="doctag">@param</span> cmdParams SQL 语句的参数表</div><div class="line">     * <span class="doctag">@return</span> 如果获取失败将返回 null,调用时记得检查返回值</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> PreparedStatement <span class="title">getPreparedStatement</span><span class="params">(Connection conn, String cmdText, Object[] cmdParams)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (conn == <span class="keyword">null</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        PreparedStatement pstmt = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">try</span></div><div class="line">        &#123;</div><div class="line">            pstmt = conn.prepareStatement(cmdText, ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);</div><div class="line">            <span class="keyword">int</span> i = <span class="number">1</span>;</div><div class="line">            <span class="keyword">for</span> (Object item : cmdParams)</div><div class="line">            &#123;</div><div class="line">                pstmt.setObject(i, item);</div><div class="line">                i++;</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (SQLException ex)</div><div class="line">        &#123;</div><div class="line">            System.out.println(ex.getMessage());</div><div class="line">            <span class="comment">//ex.printStackTrace();</span></div><div class="line">            close(pstmt);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> pstmt;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 执行 SQL 语句,返回结果为整型</div><div class="line">     * 主要用于执行非查询语句</div><div class="line">     * <span class="doctag">@param</span> cmdText SQL 语句</div><div class="line">     * <span class="doctag">@return</span> 非负数:正常执行; -1:执行错误; -2:连接错误</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">ExecSql</span><span class="params">(String cmdText)</span></span></div><div class="line">    &#123;</div><div class="line">        Statement stmt = getStatement();</div><div class="line">        <span class="keyword">if</span> (stmt == <span class="keyword">null</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> -<span class="number">2</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> i;</div><div class="line">        <span class="keyword">try</span></div><div class="line">        &#123;</div><div class="line">            i = stmt.executeUpdate(cmdText);</div><div class="line">        &#125; <span class="keyword">catch</span> (SQLException ex)</div><div class="line">        &#123;</div><div class="line">            <span class="comment">//Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null,ex);</span></div><div class="line">            System.out.println(ex.getMessage());</div><div class="line">            i = -<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        closeConnection(stmt);</div><div class="line">        <span class="keyword">return</span> i;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 执行 SQL 语句,返回结果为整型</div><div class="line">     * 主要用于执行非查询语句</div><div class="line">     * <span class="doctag">@param</span> cmdText SQL 语句</div><div class="line">     * <span class="doctag">@return</span> 非负数:正常执行; -1:执行错误; -2:连接错误</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">ExecSql</span><span class="params">(Connection conn, String cmdText)</span></span></div><div class="line">    &#123;</div><div class="line">        Statement stmt = getStatement(conn);</div><div class="line">        <span class="keyword">if</span> (stmt == <span class="keyword">null</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> -<span class="number">2</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> i;</div><div class="line">        <span class="keyword">try</span></div><div class="line">        &#123;</div><div class="line">            i = stmt.executeUpdate(cmdText);</div><div class="line"></div><div class="line">        &#125; <span class="keyword">catch</span> (SQLException ex)</div><div class="line">        &#123;</div><div class="line">            <span class="comment">//Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);</span></div><div class="line">            System.out.println(ex.getMessage());</div><div class="line">           </div><div class="line">            i = -<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        close(stmt);</div><div class="line">        <span class="keyword">return</span> i;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 执行 SQL 语句,返回结果为整型</div><div class="line">     * 主要用于执行非查询语句</div><div class="line">     * <span class="doctag">@param</span> cmdText 需要 ? 参数的 SQL 语句</div><div class="line">     * <span class="doctag">@param</span> cmdParams SQL 语句的参数表</div><div class="line">     * <span class="doctag">@return</span> 非负数:正常执行; -1:执行错误; -2:连接错误</div><div class="line">     */</div><div class="line">    <span class="comment">//非常好用</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">ExecSql</span><span class="params">(String cmdText, Object[] cmdParams)</span></span></div><div class="line">    &#123;</div><div class="line">        PreparedStatement pstmt = getPreparedStatement(cmdText, cmdParams);</div><div class="line">        <span class="keyword">if</span> (pstmt == <span class="keyword">null</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> -<span class="number">2</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> i;</div><div class="line">        <span class="keyword">try</span></div><div class="line">        &#123;</div><div class="line">            i = pstmt.executeUpdate();</div><div class="line">        &#125; <span class="keyword">catch</span> (SQLException ex)</div><div class="line">        &#123;</div><div class="line">            <span class="comment">//Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);</span></div><div class="line">            System.out.println(ex.getMessage());</div><div class="line">           i = -<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        closeConnection(pstmt);</div><div class="line">        <span class="keyword">return</span> i;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 执行 SQL 语句,返回结果为整型</div><div class="line">     * 主要用于执行非查询语句</div><div class="line">     * <span class="doctag">@param</span> conn 数据库连接</div><div class="line">     * <span class="doctag">@param</span> cmdText 需要 ? 参数的 SQL 语句</div><div class="line">     * <span class="doctag">@param</span> cmdParams SQL 语句的参数表</div><div class="line">     * <span class="doctag">@return</span> 非负数:正常执行; -1:执行错误; -2:连接错误</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">ExecSql</span><span class="params">(Connection conn, String cmdText, Object[] cmdParams)</span></span></div><div class="line">    &#123;</div><div class="line">        PreparedStatement pstmt = getPreparedStatement(conn, cmdText, cmdParams);</div><div class="line">        <span class="keyword">if</span> (pstmt == <span class="keyword">null</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> -<span class="number">2</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> i;</div><div class="line">        <span class="keyword">try</span></div><div class="line">        &#123;</div><div class="line">            i = pstmt.executeUpdate();</div><div class="line"></div><div class="line">        &#125; <span class="keyword">catch</span> (SQLException ex)</div><div class="line">        &#123;</div><div class="line">            <span class="comment">//Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);</span></div><div class="line">            System.out.println(ex.getMessage());</div><div class="line">            i = -<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        close(pstmt);</div><div class="line">        <span class="keyword">return</span> i;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 返回结果集的第一行的一列的值,其他忽略</div><div class="line">     * <span class="doctag">@param</span> cmdText SQL 语句</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">ExecScalar</span><span class="params">(String cmdText)</span></span></div><div class="line">    &#123;</div><div class="line">        ResultSet rs = getResultSet(cmdText);</div><div class="line">        Object obj = getScalar(rs);</div><div class="line">        closeConnection(rs);</div><div class="line">        <span class="keyword">return</span> obj;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 返回结果集的第一行的一列的值,其他忽略</div><div class="line">     * <span class="doctag">@param</span> conn 数据库连接</div><div class="line">     * <span class="doctag">@param</span> cmdText SQL 语句</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">ExecScalar</span><span class="params">(Connection conn, String cmdText)</span></span></div><div class="line">    &#123;</div><div class="line">        ResultSet rs = getResultSet(conn, cmdText);</div><div class="line">        Object obj = getScalar(rs);</div><div class="line">        closeEx(rs);</div><div class="line">        <span class="keyword">return</span> obj;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 返回结果集的第一行的一列的值,其他忽略</div><div class="line">     * <span class="doctag">@param</span> cmdText 需要 ? 参数的 SQL 语句</div><div class="line">     * <span class="doctag">@param</span> cmdParams SQL 语句的参数表</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">ExecScalar</span><span class="params">(String cmdText, Object[] cmdParams)</span></span></div><div class="line">    &#123;</div><div class="line">        ResultSet rs = getResultSet(cmdText, cmdParams);</div><div class="line">        Object obj = getScalar(rs);</div><div class="line">        closeConnection(rs);</div><div class="line">        <span class="keyword">return</span> obj;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 返回结果集的第一行的一列的值,其他忽略</div><div class="line">     * <span class="doctag">@param</span> conn 数据库连接</div><div class="line">     * <span class="doctag">@param</span> cmdText 需要 ? 参数的 SQL 语句</div><div class="line">     * <span class="doctag">@param</span> cmdParams SQL 语句的参数表</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">ExecScalar</span><span class="params">(Connection conn, String cmdText, Object[] cmdParams)</span></span></div><div class="line">    &#123;</div><div class="line">        ResultSet rs = getResultSet(conn, cmdText, cmdParams);</div><div class="line">        Object obj = getScalar(rs);</div><div class="line">        closeEx(rs);</div><div class="line">        <span class="keyword">return</span> obj;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 返回一个 ResultSet</div><div class="line">     * <span class="doctag">@param</span> cmdText SQL 语句</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ResultSet <span class="title">getResultSet</span><span class="params">(String cmdText)</span></span></div><div class="line">    &#123;</div><div class="line">        Statement stmt = getStatement();</div><div class="line">        <span class="keyword">if</span> (stmt == <span class="keyword">null</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">try</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> stmt.executeQuery(cmdText);</div><div class="line">        &#125; <span class="keyword">catch</span> (SQLException ex)</div><div class="line">        &#123;</div><div class="line">            <span class="comment">//Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);</span></div><div class="line">            System.out.println(ex.getMessage());</div><div class="line">           closeConnection(stmt);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 返回一个 ResultSet</div><div class="line">     * <span class="doctag">@param</span> conn</div><div class="line">     * <span class="doctag">@param</span> cmdText SQL 语句</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ResultSet <span class="title">getResultSet</span><span class="params">(Connection conn, String cmdText)</span></span></div><div class="line">    &#123;</div><div class="line">        Statement stmt = getStatement(conn);</div><div class="line">        <span class="keyword">if</span> (stmt == <span class="keyword">null</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">try</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> stmt.executeQuery(cmdText);</div><div class="line">        &#125; <span class="keyword">catch</span> (SQLException ex)</div><div class="line">        &#123;</div><div class="line">            <span class="comment">//Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);</span></div><div class="line">            System.out.println(ex.getMessage());</div><div class="line">            close(stmt);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 返回一个 ResultSet</div><div class="line">     * <span class="doctag">@param</span> cmdText 需要 ? 参数的 SQL 语句</div><div class="line">     * <span class="doctag">@param</span> cmdParams SQL 语句的参数表</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ResultSet <span class="title">getResultSet</span><span class="params">(String cmdText, Object[] cmdParams)</span></span></div><div class="line">    &#123;</div><div class="line">        PreparedStatement pstmt = getPreparedStatement(cmdText, cmdParams);</div><div class="line">        <span class="keyword">if</span> (pstmt == <span class="keyword">null</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">try</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> pstmt.executeQuery();</div><div class="line">        &#125; <span class="keyword">catch</span> (SQLException ex)</div><div class="line">        &#123;</div><div class="line">            <span class="comment">//Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);</span></div><div class="line">            System.out.println(ex.getMessage());</div><div class="line">            closeConnection(pstmt);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 返回一个 ResultSet</div><div class="line">     * <span class="doctag">@param</span> conn 数据库连接</div><div class="line">     * <span class="doctag">@param</span> cmdText 需要 ? 参数的 SQL 语句</div><div class="line">     * <span class="doctag">@param</span> cmdParams SQL 语句的参数表</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ResultSet <span class="title">getResultSet</span><span class="params">(Connection conn, String cmdText, Object[] cmdParams)</span></span></div><div class="line">    &#123;</div><div class="line">        PreparedStatement pstmt = getPreparedStatement(conn, cmdText, cmdParams);</div><div class="line">        <span class="keyword">if</span> (pstmt == <span class="keyword">null</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">try</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> pstmt.executeQuery();</div><div class="line">        &#125; <span class="keyword">catch</span> (SQLException ex)</div><div class="line">        &#123;</div><div class="line">            <span class="comment">//Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);</span></div><div class="line">            System.out.println(ex.getMessage());</div><div class="line">            close(pstmt);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Object <span class="title">getScalar</span><span class="params">(ResultSet rs)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (rs == <span class="keyword">null</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">        &#125;</div><div class="line">        Object obj = <span class="keyword">null</span>;</div><div class="line">        <span class="keyword">try</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span> (rs.next())</div><div class="line">            &#123;</div><div class="line">                obj = rs.getObject(<span class="number">1</span>);</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (SQLException ex)</div><div class="line">        &#123;</div><div class="line">            <span class="comment">//Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);</span></div><div class="line">            System.out.println(ex.getMessage());</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> obj;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">(Object obj)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (obj == <span class="keyword">null</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">try</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> Statement)</div><div class="line">            &#123;</div><div class="line">                ((Statement) obj).close();</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> PreparedStatement)</div><div class="line">            &#123;</div><div class="line">                ((PreparedStatement) obj).close();</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> ResultSet)</div><div class="line">            &#123;</div><div class="line">                ((ResultSet) obj).close();</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> Connection)</div><div class="line">            &#123;</div><div class="line">                ((Connection) obj).close();</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (SQLException ex)</div><div class="line">        &#123;</div><div class="line">            <span class="comment">//Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);</span></div><div class="line">            System.out.println(ex.getMessage());</div><div class="line">       &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">closeEx</span><span class="params">(Object obj)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (obj == <span class="keyword">null</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">try</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> Statement)</div><div class="line">            &#123;</div><div class="line">                ((Statement) obj).close();</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> PreparedStatement)</div><div class="line">            &#123;</div><div class="line">                ((PreparedStatement) obj).close();</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> ResultSet)</div><div class="line">            &#123;</div><div class="line">                ((ResultSet) obj).getStatement().close();</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> Connection)</div><div class="line">            &#123;</div><div class="line">                ((Connection) obj).close();</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (SQLException ex)</div><div class="line">        &#123;</div><div class="line">            <span class="comment">//Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);</span></div><div class="line">            System.out.println(ex.getMessage());</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">closeConnection</span><span class="params">(Object obj)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (obj == <span class="keyword">null</span>)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">try</span></div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> Statement)</div><div class="line">            &#123;</div><div class="line">                ((Statement) obj).getConnection().close();</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> PreparedStatement)</div><div class="line">            &#123;</div><div class="line">                ((PreparedStatement) obj).getConnection().close();</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> ResultSet)</div><div class="line">            &#123;</div><div class="line">                ((ResultSet) obj).getStatement().getConnection().close();</div><div class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> Connection)</div><div class="line">            &#123;</div><div class="line">                ((Connection) obj).close();</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (SQLException ex)</div><div class="line">        &#123;</div><div class="line">            <span class="comment">//Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);</span></div><div class="line">            System.out.println(ex.getMessage());</div><div class="line">       &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="例子sjp文件内容："><a href="#例子sjp文件内容：" class="headerlink" title="例子sjp文件内容："></a>例子sjp文件内容：</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page language="java" import="java.util.*,java.sql.*,DBHelper.*" pageEncoding="UTF-8"%&gt;</div><div class="line">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;meta http-equiv="content-type" content="text/html; charset=UTF-8"&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">  &lt;%</div><div class="line">    String SQL="SELECT * FROM user WHERE userName=? AND password=?";</div><div class="line">    String uid=request.getParameter("uid");</div><div class="line">    String pwd=request.getParameter("pwd");</div><div class="line">    Object[] params=new Object[]&#123;uid,pwd&#125;;</div><div class="line">    ResultSet rs=DBHelper.getResultSet(SQL,params);</div><div class="line">    if(rs.next())</div><div class="line">    out.print("登录成功");</div><div class="line">    else</div><div class="line">    out.print("登录失败");</div><div class="line">    rs.close();</div><div class="line">    %&gt;</div><div class="line">  </div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.png" alt="CN_Simo wechat" style="width: 200px; max-width: 100%;"/>
+    <div>Contact me by scanning my WeChat!</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/zhuanzhang.png" alt="CN_Simo WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017-02-24/The import XXX cannot be resolved【eclipse】/" rel="next" title="eclipse：The import XXX cannot be resolved">
+                <i class="fa fa-chevron-left"></i> eclipse：The import XXX cannot be resolved
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017-02-24/Java Web连接Mysql数据库的通用类代码/"
+     data-title="Java Web连接Mysql的通用类代码"
+     data-content=""
+     data-url="http://cnsimo.cn/2017-02-24/Java Web连接Mysql数据库的通用类代码/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017-02-24/Java Web连接Mysql数据库的通用类代码/"
+           data-title="Java Web连接Mysql的通用类代码" data-url="http://cnsimo.cn/2017-02-24/Java Web连接Mysql数据库的通用类代码/">
+      </div>
+    
+  </div>
+
+
+          
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/b12.jpg"
+               alt="CN_Simo" />
+          <p class="site-author-name" itemprop="name">CN_Simo</p>
+          <p class="site-description motion-element" itemprop="description">我是一个小小的程序员，每天都在为许许多多的bug而奋斗，这里也是我的劳动成果！如果你我志同道合，希望多多交流！</p>
+
+
+
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/54Simo" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.cnblogs.com/lxmwb" target="_blank" title="博客园">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  博客园
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank" rel="external nofollow">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://tongji.baidu.com/" title="百度统计" target="_blank" rel="external nofollow">百度统计</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://zhanzhang.baidu.com/" title="百度站长" target="_blank" rel="external nofollow">百度站长</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://leancloud.cn/" title="Leancloud" target="_blank" rel="external nofollow">Leancloud</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://theme-next.iissnan.com/" title="Next主题配置文档" target="_blank" rel="external nofollow">Next主题配置文档</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://link.chinaz.com/54simo.github.io" title="站长工具" target="_blank" rel="external nofollow">站长工具</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.bing.com/toolbox/webmaster" title="微软站长" target="_blank" rel="external nofollow">微软站长</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用情况："><span class="nav-number">1.</span> <span class="nav-text">使用情况：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类代码如下："><span class="nav-number">2.</span> <span class="nav-text">类代码如下：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子sjp文件内容："><span class="nav-number">3.</span> <span class="nav-text">例子sjp文件内容：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+
+<ul>
+          <li> <a title="点我可以让整个世界High起来哦！" href='javascript:(function() {
+    function c() {
+        var e = document.createElement("link");
+        e.setAttribute("type", "text/css");
+        e.setAttribute("rel", "stylesheet");
+        e.setAttribute("href", f);
+        e.setAttribute("class", l);
+        document.body.appendChild(e)
+    }
+
+    function h() {
+        var e = document.getElementsByClassName(l);
+        for (var t = 0; t < e.length; t++) {
+            document.body.removeChild(e[t])
+        }
+    }
+
+    function p() {
+        var e = document.createElement("div");
+        e.setAttribute("class", a);
+        document.body.appendChild(e);
+        setTimeout(function() {
+            document.body.removeChild(e)
+        }, 100)
+    }
+
+    function d(e) {
+        return {
+            height : e.offsetHeight,
+            width : e.offsetWidth
+        }
+    }
+
+    function v(i) {
+        var s = d(i);
+        return s.height > e && s.height < n && s.width > t && s.width < r
+    }
+
+    function m(e) {
+        var t = e;
+        var n = 0;
+        while (!!t) {
+            n += t.offsetTop;
+            t = t.offsetParent
+        }
+        return n
+    }
+
+    function g() {
+        var e = document.documentElement;
+        if (!!window.innerWidth) {
+            return window.innerHeight
+        } else if (e && !isNaN(e.clientHeight)) {
+            return e.clientHeight
+        }
+        return 0
+    }
+
+    function y() {
+        if (window.pageYOffset) {
+            return window.pageYOffset
+        }
+        return Math.max(document.documentElement.scrollTop, document.body.scrollTop)
+    }
+
+    function E(e) {
+        var t = m(e);
+        return t >= w && t <= b + w
+    }
+
+    function S() {
+        var e = document.createElement("audio");
+        e.setAttribute("class", l);
+        e.src = i;
+        e.loop = false;
+        e.addEventListener("canplay", function() {
+            setTimeout(function() {
+                x(k)
+            }, 500);
+            setTimeout(function() {
+                N();
+                p();
+                for (var e = 0; e < O.length; e++) {
+                    T(O[e])
+                }
+            }, 15500)
+        }, true);
+        e.addEventListener("ended", function() {
+            N();
+            h()
+        }, true);
+        e.innerHTML = " <p>If you are reading this, it is because your browser does not support the audio element. We recommend that you get a new browser.</p> <p>";
+        document.body.appendChild(e);
+        e.play()
+    }
+
+    function x(e) {
+        e.className += " " + s + " " + o
+    }
+
+    function T(e) {
+        e.className += " " + s + " " + u[Math.floor(Math.random() * u.length)]
+    }
+
+    function N() {
+        var e = document.getElementsByClassName(s);
+        var t = new RegExp("\\b" + s + "\\b");
+        for (var n = 0; n < e.length; ) {
+            e[n].className = e[n].className.replace(t, "")
+        }
+    }
+
+    var e = 30;
+    var t = 30;
+    var n = 350;
+    var r = 350;
+    var i = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake.mp3";
+    var s = "mw-harlem_shake_me";
+    var o = "im_first";
+    var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
+    var a = "mw-strobe_light";
+    var f = "//s3.amazonaws.com/moovweb-marketing/playground/harlem-shake-style.css";
+    var l = "mw_added_css";
+    var b = g();
+    var w = y();
+    var C = document.getElementsByTagName("*");
+    var k = null;
+    for (var L = 0; L < C.length; L++) {
+        var A = C[L];
+        if (v(A)) {
+            if (E(A)) {
+                k = A;
+                break
+            }
+        }
+    }
+    if (A === null) {
+        console.warn("Could not find a node of the right size. Please try a different page.");
+        return
+    }
+    c();
+    S();
+    var O = [];
+    for (var L = 0; L < C.length; L++) {
+        var A = C[L];
+        if (v(A)) {
+            O.push(A)
+        }
+    }
+})()'>High一下</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp </li></ul>
+
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" align="center">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CN_Simo</span>
+</div>
+
+<!--
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io" rel="external nofollow">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow">
+    NexT.Mist
+  </a>
+</div>
+
+-->
+
+<div class="words" align="center">
+感谢大家的鼎力支持与关注
+</div>
+        
+
+<div class="busuanzi-count" align="center">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"simo"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+  
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+</body>
+</html>
