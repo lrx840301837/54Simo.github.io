@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="simo的技术博客,simo,blog,个人博客,凌小墨,CN_Simo,cnsimo.cn,cnsimo" />
+  <meta name="keywords" content="Qt,Qt Creator,GUI,C++" />
 
 
 
@@ -101,15 +101,24 @@
 </script>
 <!--加密字段-->
 
-<meta name="description" content="我是一个小小的程序员，每天都在为许许多多的bug而奋斗，这里也是我的劳动成果！如果你我志同道合，希望多多交流！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CN_Simo">
-<meta property="og:url" content="http://cnsimo.cn/archives/2015/index.html">
+<meta name="description" content="装载请注明出处：CN_Simo.
+导语：
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;前两章都提到过“静态编译”（Static Compilation），在Windows下一次静态编译差不多需要长达三个小时才能完成，而且还非常容易由于各种原因而出错。那么为什么要花这时间去干这件事情呢！我当初只是想用Qt做一个exe贺卡发给同学，但是通常情况下，我">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Qt入门之基础篇（三）：掌握Qt4的静态编译基本方法">
+<meta property="og:url" content="http://cnsimo.cn/2017-02-25/Qt入门之基础篇（三）：掌握Qt4的静态编译基本方法/index.html">
 <meta property="og:site_name" content="CN_Simo">
-<meta property="og:description" content="我是一个小小的程序员，每天都在为许许多多的bug而奋斗，这里也是我的劳动成果！如果你我志同道合，希望多多交流！">
+<meta property="og:description" content="装载请注明出处：CN_Simo.
+导语：
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;前两章都提到过“静态编译”（Static Compilation），在Windows下一次静态编译差不多需要长达三个小时才能完成，而且还非常容易由于各种原因而出错。那么为什么要花这时间去干这件事情呢！我当初只是想用Qt做一个exe贺卡发给同学，但是通常情况下，我">
+<meta property="og:image" content="http://cnsimo.cn/images/info.jpg">
+<meta property="og:updated_time" content="2017-02-25T13:15:15.388Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CN_Simo">
-<meta name="twitter:description" content="我是一个小小的程序员，每天都在为许许多多的bug而奋斗，这里也是我的劳动成果！如果你我志同道合，希望多多交流！">
+<meta name="twitter:title" content="Qt入门之基础篇（三）：掌握Qt4的静态编译基本方法">
+<meta name="twitter:description" content="装载请注明出处：CN_Simo.
+导语：
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;前两章都提到过“静态编译”（Static Compilation），在Windows下一次静态编译差不多需要长达三个小时才能完成，而且还非常容易由于各种原因而出错。那么为什么要花这时间去干这件事情呢！我当初只是想用Qt做一个exe贺卡发给同学，但是通常情况下，我">
+<meta name="twitter:image" content="http://cnsimo.cn/images/info.jpg">
 
 
 
@@ -137,13 +146,13 @@
 
 
 
-  <link rel="canonical" href="http://cnsimo.cn/archives/2015/"/>
+  <link rel="canonical" href="http://cnsimo.cn/2017-02-25/Qt入门之基础篇（三）：掌握Qt4的静态编译基本方法/"/>
 
 
 
 
 
-  <title> 归档 | CN_Simo </title>
+  <title> Qt入门之基础篇（三）：掌握Qt4的静态编译基本方法 | CN_Simo </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -174,7 +183,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -452,72 +461,266 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 8 篇日志。 继续努力。
-    </span>
-
+  <div id="posts" class="posts-expand">
     
 
-      
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://cnsimo.cn/2017-02-25/Qt入门之基础篇（三）：掌握Qt4的静态编译基本方法/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="CN_Simo">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/b12.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="CN_Simo">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="CN_Simo" src="/images/wechat-qcode.png">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                Qt入门之基础篇（三）：掌握Qt4的静态编译基本方法
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-25T19:56:00+08:00">
+                2017-02-25
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-02-25T21:15:15+08:00">
+                2017-02-25
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Qt框架/" itemprop="url" rel="index">
+                    <span itemprop="name">Qt框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017-02-25/Qt入门之基础篇（三）：掌握Qt4的静态编译基本方法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017-02-25/Qt入门之基础篇（三）：掌握Qt4的静态编译基本方法/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
       
 
       
+        <p>装载请注明出处：<a href=""><strong>CN_Simo</strong></a>.</p>
+<h1 id="导语："><a href="#导语：" class="headerlink" title="导语："></a>导语：</h1><blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前两章都提到过“静态编译”（Static Compilation），在Windows下一次静态编译差不多需要长达三个小时才能完成，而且还非常容易由于各种原因而出错。那么为什么要花这时间去干这件事情呢！我当初只是想用Qt做一个exe贺卡发给同学，但是通常情况下，我们做出的exe需要各种dll动态链接文件才能正常运行（压缩打包给别人？直接发送一个exe文件都懒得打开，更何况还需要解压呢），那么我就想能不能只需要一个exe就可以呢。<br>        “静态编译”的作用正是让exe脱离dll的束缚，但是同时你的exe可能比之前要大好几倍（没办法，万物都无绝对完美）。前言说到这里，我们就进入正文来：</p>
+</blockquote>
+<h1 id="文章思路："><a href="#文章思路：" class="headerlink" title="文章思路："></a>文章思路：</h1><ol>
+<li>准备编译所需环境及文件；</li>
+<li>编译Qt4.8.6源码；（<strong>此过程或许要花掉你一上午的时间，要有良好的心理素质哦！</strong>）</li>
+<li>配置Qt静态库到Qt Creator；</li>
+<li>静态模式重新编译Hello World程序；</li>
+<li>找到exe程序与之前版本进行大小对比；</li>
+<li>总结说明。<h1 id="Let‘s-start："><a href="#Let‘s-start：" class="headerlink" title="Let‘s start："></a>Let‘s start：</h1><h2 id="编译准备："><a href="#编译准备：" class="headerlink" title="编译准备："></a>编译准备：</h2><h3 id="所需环境："><a href="#所需环境：" class="headerlink" title="所需环境："></a>所需环境：</h3><strong>配置当然是越好越快了，我的配置编译了一上午</strong><br><img src="http://cnsimo.cn/images/info.jpg" alt="电脑配置信息"><h3 id="所需文件"><a href="#所需文件" class="headerlink" title="所需文件"></a>所需文件</h3><h2 id="前期工作："><a href="#前期工作：" class="headerlink" title="前期工作："></a>前期工作：</h2><h2 id="开始编译："><a href="#开始编译：" class="headerlink" title="开始编译："></a>开始编译：</h2><h2 id="编译结束："><a href="#编译结束：" class="headerlink" title="编译结束："></a>编译结束：</h2><h2 id="配置Qt-Creator："><a href="#配置Qt-Creator：" class="headerlink" title="配置Qt Creator："></a>配置Qt Creator：</h2><h2 id="Hello-World测试："><a href="#Hello-World测试：" class="headerlink" title="Hello World测试："></a>Hello World测试：</h2><h2 id="exe文件对比："><a href="#exe文件对比：" class="headerlink" title="exe文件对比："></a>exe文件对比：</h2><h1 id="总结说明："><a href="#总结说明：" class="headerlink" title="总结说明："></a>总结说明：</h1><h1 id="结束："><a href="#结束：" class="headerlink" title="结束："></a>结束：</h1>上一篇：<a href="http://www.cnblogs.com/lxmwb/p/6353883.html" target="_blank" rel="external">Qt入门之基础篇（二）：Qt项目建立、编译、运行和发布过程解析</a></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2015">2015</h2>
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.png" alt="CN_Simo wechat" style="width: 200px; max-width: 100%;"/>
+    <div>Contact me by scanning my WeChat!</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/zhuanzhang.png" alt="CN_Simo WeChat Pay"/>
+          <p>微信打赏</p>
         </div>
       
       
+    </div>
+  </div>
+
 
       
+    </div>
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2015-11-10/淡说Linux的发展史/" itemprop="url">
-              
-                <span itemprop="name">淡说Linux的发展史</span>
-              
-            </a>
-        
-      </h2>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Qt入门之基础篇/" rel="tag"># Qt入门之基础篇</a>
+          
+        </div>
+      
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2015-11-10T17:07:00+08:00"
-              content="2015-11-10" >
-          11-10
-        </time>
-      </div>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017-02-24/Java Web连接Mysql数据库的通用类代码/" rel="next" title="Java Web连接Mysql的通用类代码">
+                <i class="fa fa-chevron-left"></i> Java Web连接Mysql的通用类代码
+              </a>
+            
+          </div>
 
-    </header>
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
 
-    
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017-02-25/Qt入门之基础篇（三）：掌握Qt4的静态编译基本方法/"
+     data-title="Qt入门之基础篇（三）：掌握Qt4的静态编译基本方法"
+     data-content=""
+     data-url="http://cnsimo.cn/2017-02-25/Qt入门之基础篇（三）：掌握Qt4的静态编译基本方法/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
 
-  </section>
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
 
-  
-
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
 
 
           </div>
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017-02-25/Qt入门之基础篇（三）：掌握Qt4的静态编译基本方法/"
+           data-title="Qt入门之基础篇（三）：掌握Qt4的静态编译基本方法" data-url="http://cnsimo.cn/2017-02-25/Qt入门之基础篇（三）：掌握Qt4的静态编译基本方法/">
+      </div>
+    
+  </div>
+
 
           
+
+  <p>热评文章</p>
+  <div class="ds-top-threads" data-range="weekly" data-num-items="4"></div>
 
 
         </div>
@@ -538,8 +741,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/b12.jpg"
@@ -658,6 +870,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#导语："><span class="nav-number">1.</span> <span class="nav-text">导语：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文章思路："><span class="nav-number">2.</span> <span class="nav-text">文章思路：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Let‘s-start："><span class="nav-number">3.</span> <span class="nav-text">Let‘s start：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编译准备："><span class="nav-number">3.1.</span> <span class="nav-text">编译准备：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#所需环境："><span class="nav-number">3.1.1.</span> <span class="nav-text">所需环境：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#所需文件"><span class="nav-number">3.1.2.</span> <span class="nav-text">所需文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#前期工作："><span class="nav-number">3.2.</span> <span class="nav-text">前期工作：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开始编译："><span class="nav-number">3.3.</span> <span class="nav-text">开始编译：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译结束："><span class="nav-number">3.4.</span> <span class="nav-text">编译结束：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置Qt-Creator："><span class="nav-number">3.5.</span> <span class="nav-text">配置Qt Creator：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hello-World测试："><span class="nav-number">3.6.</span> <span class="nav-text">Hello World测试：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#exe文件对比："><span class="nav-number">3.7.</span> <span class="nav-text">exe文件对比：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结说明："><span class="nav-number">4.</span> <span class="nav-text">总结说明：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结束："><span class="nav-number">5.</span> <span class="nav-text">结束：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
 
@@ -932,11 +1160,9 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
 
 
   
@@ -1111,26 +1337,6 @@
 
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
