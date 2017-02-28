@@ -117,7 +117,7 @@
 <meta property="og:image" content="http://cnsimo.cn/images/static7.jpg">
 <meta property="og:image" content="http://cnsimo.cn/images/static6.jpg">
 <meta property="og:image" content="http://cnsimo.cn/images/static5.jpg">
-<meta property="og:updated_time" content="2017-02-28T13:29:16.231Z">
+<meta property="og:updated_time" content="2017-02-28T13:37:10.089Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Qt入门之基础篇（三）：掌握Qt4的静态编译基本方法">
 <meta name="twitter:description" content="转载载请注明出处：CN_Simo.
@@ -530,7 +530,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-02-28T21:29:16+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-02-28T21:37:10+08:00">
                 2017-02-28
               </time>
             
@@ -621,10 +621,8 @@
 <p><img src="http://cnsimo.cn/images/static2.jpg" alt=""></p>
 <ul>
 <li>set命令设置环境变量（<strong>注意：窗口关闭将清空设置，需重新设置</strong>）</li>
-<li>configure命令配置编译内容，参数说明：</li>
+<li>configure命令配置编译内容，参数说明：<br><img src="http://cnsimo.cn/images/static0.jpg" alt="参数说明"><br>回车后，看到以下信息代表完成：<br><img src="http://cnsimo.cn/images/static3.jpg" alt=""></li>
 </ul>
-<p><img src="http://cnsimo.cn/images/static0.jpg" alt="参数说明"></p>
-<p>回车后，看到以下信息代表完成：<br><img src="http://cnsimo.cn/images/static3.jpg" alt=""></p>
 <h2 id="3-3-开始编译："><a href="#3-3-开始编译：" class="headerlink" title="3.3.开始编译："></a>3.3.开始编译：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mingw32-make</div></pre></td></tr></table></figure>
 <p>输入命令开始编译，此过程最易出错，因为持续时间长，中间可能遇到很多自己解决不了的问题，此时只能是重新开始。如果过程中未出错的话可能需要3个小时以上才能结束（我的电脑配置见上），你可以去做别的事情了，在编译过程中最好不要用电脑去做其他占用大量系统资源的事情，因为这么做将会大大增加失败的几率。</p>
 <h2 id="3-4-编译结束："><a href="#3-4-编译结束：" class="headerlink" title="3.4.编译结束："></a>3.4.编译结束：</h2><p>结束之后，输入下面命令开始一大堆的复制命令，这时你可以看到qt4.8.6_static目录已经开始急剧膨胀了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mingw32-make install</div></pre></td></tr></table></figure></p>
