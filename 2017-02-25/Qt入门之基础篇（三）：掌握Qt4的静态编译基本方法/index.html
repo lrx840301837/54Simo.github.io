@@ -101,30 +101,30 @@
 </script>
 <!--加密字段-->
 
-<meta name="description" content="装载请注明出处：CN_Simo.
+<meta name="description" content="转载载请注明出处：CN_Simo.
 1.导语：
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;前两章都提到过“静态编译”（Static Compilation），在Windows下一次静态编译差不多需要长达三个小时才能完成，而且还非常容易由于各种原因而出错。那么为什么要花这时间去干这件事情呢！我当初只是想用Qt做一个exe贺卡发给同学，但是通常情况下">
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;前两章都提到过“静态编译”（Static Compilation），在Windows下一次静态编译差不多需要长达三个小时才能完成，而且还非常容易由于各种原因而出错。那么为什么要花这时间去干这件事情呢！我当初只是想用Qt做一个exe贺卡发给同学，但是通常情况">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Qt入门之基础篇（三）：掌握Qt4的静态编译基本方法">
 <meta property="og:url" content="http://cnsimo.cn/2017-02-25/Qt入门之基础篇（三）：掌握Qt4的静态编译基本方法/index.html">
 <meta property="og:site_name" content="CN_Simo">
-<meta property="og:description" content="装载请注明出处：CN_Simo.
+<meta property="og:description" content="转载载请注明出处：CN_Simo.
 1.导语：
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;前两章都提到过“静态编译”（Static Compilation），在Windows下一次静态编译差不多需要长达三个小时才能完成，而且还非常容易由于各种原因而出错。那么为什么要花这时间去干这件事情呢！我当初只是想用Qt做一个exe贺卡发给同学，但是通常情况下">
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;前两章都提到过“静态编译”（Static Compilation），在Windows下一次静态编译差不多需要长达三个小时才能完成，而且还非常容易由于各种原因而出错。那么为什么要花这时间去干这件事情呢！我当初只是想用Qt做一个exe贺卡发给同学，但是通常情况">
 <meta property="og:image" content="http://cnsimo.cn/images/info.jpg">
 <meta property="og:image" content="http://cnsimo.cn/images/static1.jpg">
 <meta property="og:image" content="http://cnsimo.cn/images/static2.jpg">
 <meta property="og:image" content="http://cnsimo.cn/images/static0.jpg">
-<meta property="og:image" content="http://cisimo.cn/images/static3.jpg">
+<meta property="og:image" content="http://cnsimo.cn/images/static3.jpg">
 <meta property="og:image" content="http://cnsimo.cn/images/static7.jpg">
 <meta property="og:image" content="http://cnsimo.cn/images/static6.jpg">
 <meta property="og:image" content="http://cnsimo.cn/images/static5.jpg">
-<meta property="og:updated_time" content="2017-02-28T13:18:47.871Z">
+<meta property="og:updated_time" content="2017-02-28T13:23:08.594Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Qt入门之基础篇（三）：掌握Qt4的静态编译基本方法">
-<meta name="twitter:description" content="装载请注明出处：CN_Simo.
+<meta name="twitter:description" content="转载载请注明出处：CN_Simo.
 1.导语：
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;前两章都提到过“静态编译”（Static Compilation），在Windows下一次静态编译差不多需要长达三个小时才能完成，而且还非常容易由于各种原因而出错。那么为什么要花这时间去干这件事情呢！我当初只是想用Qt做一个exe贺卡发给同学，但是通常情况下">
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;前两章都提到过“静态编译”（Static Compilation），在Windows下一次静态编译差不多需要长达三个小时才能完成，而且还非常容易由于各种原因而出错。那么为什么要花这时间去干这件事情呢！我当初只是想用Qt做一个exe贺卡发给同学，但是通常情况">
 <meta name="twitter:image" content="http://cnsimo.cn/images/info.jpg">
 
 
@@ -533,7 +533,7 @@
               
                 <span class="post-meta-item-text">更新于</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-02-28T21:18:47+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-02-28T21:23:08+08:00">
                 2017-02-28
               </time>
             
@@ -602,7 +602,7 @@
       
 
       
-        <p>装载请注明出处：<a href=""><strong>CN_Simo</strong></a>.</p>
+        <p>转载载请注明出处：<a href="http://cnsimo.cn"><strong>CN_Simo</strong></a>.</p>
 <h1 id="1-导语："><a href="#1-导语：" class="headerlink" title="1.导语："></a>1.导语：</h1><blockquote>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前两章都提到过“静态编译”（Static Compilation），在Windows下一次静态编译差不多需要长达三个小时才能完成，而且还非常容易由于各种原因而出错。那么为什么要花这时间去干这件事情呢！我当初只是想用Qt做一个exe贺卡发给同学，但是通常情况下，我们做出的exe需要各种dll动态链接文件才能正常运行（压缩打包给别人？直接发送一个exe文件都懒得打开，更何况还需要解压呢），那么我就想能不能只需要一个exe就可以呢。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“静态编译”的作用正是让exe脱离dll的束缚，但是同时你的exe可能比之前要大好几倍（没办法，万物都无绝对完美）。前言说到这里，我们就进入正文来：</p>
 </blockquote>
@@ -618,17 +618,18 @@
 <h1 id="3-Let‘s-start："><a href="#3-Let‘s-start：" class="headerlink" title="3.Let‘s start："></a>3.Let‘s start：</h1><h2 id="3-1-编译准备："><a href="#3-1-编译准备：" class="headerlink" title="3.1.编译准备："></a>3.1.编译准备：</h2><h3 id="3-1-1-所需环境："><a href="#3-1-1-所需环境：" class="headerlink" title="3.1.1.所需环境："></a>3.1.1.所需环境：</h3><p><strong>配置当然是越好越快了，我的配置编译了一上午</strong><br><img src="http://cnsimo.cn/images/info.jpg" alt="电脑配置信息"></p>
 <h3 id="3-1-2-所需文件"><a href="#3-1-2-所需文件" class="headerlink" title="3.1.2.所需文件"></a>3.1.2.所需文件</h3><ul>
 <li><a href="http://mirrors.sohu.com/qt-all/official_releases/qt/4.8/4.8.6/" target="_blank" rel="external">qt-everywhere-opensource-src-4.8.6.zip</a></li>
-<li>教程一中安装好的Qt（版本4或5都可）<h2 id="3-2-前期工作："><a href="#3-2-前期工作：" class="headerlink" title="3.2.前期工作："></a>3.2.前期工作：</h2><h4 id="步骤一：配置编译文件qmake-conf"><a href="#步骤一：配置编译文件qmake-conf" class="headerlink" title="步骤一：配置编译文件qmake.conf"></a>步骤一：配置编译文件qmake.conf</h4>我将zip解压到E盘，qmake.conf文件就在源码目录\mkspecs\win32-g++中，用记事本打开修改下列参数：<strong>QMAKE_LFLAGS</strong>和<strong>QMAKE_LFLAGS_DLL</strong>。参数值为 -static，如下图：<br><img src="http://cnsimo.cn/images/static1.jpg" alt="static_1"><br>修改完之后，我在E盘新建一个“qt4.8.6_static”文件夹作为编译输出目录，并且需要将更改后的“mkspecs”文件夹复制到qt4.8.6_static文件夹中。若不做此操作步骤三可能会报错，类似下面这样：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Could not find mkspecs for your QMAKESPEC(win32-g++) after trying:</div><div class="line">E:/qt/qt4.8.6_static\mkspecs</div></pre></td></tr></table></figure>
-</li>
+<li>教程一中安装好的Qt（版本4或5都可）</li>
 </ul>
+<h2 id="3-2-前期工作："><a href="#3-2-前期工作：" class="headerlink" title="3.2.前期工作："></a>3.2.前期工作：</h2><h4 id="步骤一：配置编译文件qmake-conf"><a href="#步骤一：配置编译文件qmake-conf" class="headerlink" title="步骤一：配置编译文件qmake.conf"></a>步骤一：配置编译文件qmake.conf</h4><p>我将zip解压到E盘，qmake.conf文件就在源码目录\mkspecs\win32-g++中，用记事本打开修改下列参数：<strong>QMAKE_LFLAGS</strong>和<strong>QMAKE_LFLAGS_DLL</strong>。参数值为 -static，如下图：<br><img src="http://cnsimo.cn/images/static1.jpg" alt="static_1"><br>修改完之后，我在E盘新建一个“qt4.8.6_static”文件夹作为编译输出目录，并且需要将更改后的“mkspecs”文件夹复制到qt4.8.6_static文件夹中。若不做此操作步骤三可能会报错，类似下面这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Could not find mkspecs for your QMAKESPEC(win32-g++) after trying:</div><div class="line">E:/qt/qt4.8.6_static\mkspecs</div></pre></td></tr></table></figure></p>
 <h4 id="步骤二：设置环境变量以及所需编译内容"><a href="#步骤二：设置环境变量以及所需编译内容" class="headerlink" title="步骤二：设置环境变量以及所需编译内容"></a>步骤二：设置环境变量以及所需编译内容</h4><p>开始菜单中打开Qt命令窗口，cd命令进入源码目录：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">e:&amp;<span class="built_in">cd</span> e:\qt-everywhere-opensource-src-4.8.6</div></pre></td></tr></table></figure></p>
 <p>下面所有操作都在本目录中进行。<br>输入以下两条命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">set</span> QMAKESPEC=win32-g++</div><div class="line">configure -confirm-license -opensource -prefix “F:\Qt\Qt_4.8.6_static” -debug-and-release -static -platform win32-g++ -nomake demos -nomake examples -nomake tests -fast -mp</div></pre></td></tr></table></figure></p>
 <p><img src="http://cnsimo.cn/images/static2.jpg" alt=""></p>
 <ul>
 <li>set命令设置环境变量（<strong>注意：窗口关闭将清空设置，需重新设置</strong>）</li>
-<li>configure命令配置编译内容，参数说明：<br><img src="http://cnsimo.cn/images/static0.jpg" alt="参数说明"></li>
+<li>configure命令配置编译内容，参数说明：</li>
 </ul>
-<p>回车后，看到以下信息代表完成：<br><img src="http://cisimo.cn/images/static3.jpg" alt=""></p>
+<p><img src="http://cnsimo.cn/images/static0.jpg" alt="参数说明"></p>
+<p>回车后，看到以下信息代表完成：<br><img src="http://cnsimo.cn/images/static3.jpg" alt=""></p>
 <h2 id="3-3-开始编译："><a href="#3-3-开始编译：" class="headerlink" title="3.3.开始编译："></a>3.3.开始编译：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mingw32-make</div></pre></td></tr></table></figure>
 <p>输入命令开始编译，此过程最易出错，因为持续时间长，中间可能遇到很多自己解决不了的问题，此时只能是重新开始。如果过程中未出错的话可能需要3个小时以上才能结束（我的电脑配置见上），你可以去做别的事情了，在编译过程中最好不要用电脑去做其他占用大量系统资源的事情，因为这么做将会大大增加失败的几率。</p>
 <h2 id="3-4-编译结束："><a href="#3-4-编译结束：" class="headerlink" title="3.4.编译结束："></a>3.4.编译结束：</h2><p>结束之后，输入下面命令开始一大堆的复制命令，这时你可以看到qt4.8.6_static目录已经开始急剧膨胀了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mingw32-make install</div></pre></td></tr></table></figure></p>
@@ -641,9 +642,13 @@
 <p><strong>结果显示：</strong></p>
 <ul>
 <li>同样是release版本的，所产生的helloworld程序大小完全不在一个等级（一个KB级别，一个MB级别），<strong>静态编译败</strong>；</li>
-<li>动态编译出的exe文件想要打开需要dll动态链接文件的支持，静态链接编译出的exe文件则可以直接打开，不再需要dll文件的束缚，<strong>静态编译胜</strong>；<h1 id="4-总结说明："><a href="#4-总结说明：" class="headerlink" title="4.总结说明："></a>4.总结说明：</h1>通过上面结果可以看出：动态编译和静态编译都有各自优缺点，我们应该适当选择自己所需；<br>qt源码编译的过层拖得越长越是容易出错误，选择一台配置好点的电脑可以适当增加编译速度；<br>通过本章知识，我们的内心或许会嫌麻烦又或许会觉得很有趣，如果你是后者希望以后的学习你能够越来越出色。<br>让我们一起期待下期内容吧[@CN_Simo]!<h1 id="5-结束："><a href="#5-结束：" class="headerlink" title="5.结束："></a>5.结束：</h1>上一篇：<a href="http://www.cnblogs.com/lxmwb/p/6353883.html" target="_blank" rel="external">Qt入门之基础篇（二）：Qt项目建立、编译、运行和发布过程解析</a></li>
+<li>动态编译出的exe文件想要打开需要dll动态链接文件的支持，静态链接编译出的exe文件则可以直接打开，不再需要dll文件的束缚，<strong>静态编译胜</strong>；</li>
 </ul>
 </blockquote>
+<h1 id="4-总结说明："><a href="#4-总结说明：" class="headerlink" title="4.总结说明："></a>4.总结说明：</h1><blockquote>
+<p>通过上面结果可以看出：动态编译和静态编译都有各自优缺点，我们应该适当选择自己所需；<br>qt源码编译的过层拖得越长越是容易出错误，选择一台配置好点的电脑可以适当增加编译速度；<br>通过本章知识，我们的内心或许会嫌麻烦又或许会觉得很有趣，如果你是后者希望以后的学习你能够越来越出色。<br>让我们一起期待下期内容吧[@CN_Simo]!</p>
+</blockquote>
+<h1 id="5-结束："><a href="#5-结束：" class="headerlink" title="5.结束："></a>5.结束：</h1><p>上一篇：<a href="http://www.cnblogs.com/lxmwb/p/6353883.html" target="_blank" rel="external">Qt入门之基础篇（二）：Qt项目建立、编译、运行和发布过程解析</a></p>
 
       
     </div>
